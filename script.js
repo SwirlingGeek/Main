@@ -181,3 +181,16 @@ class Trout extends Fish {
 		this.variety = variety;
 	}
 }
+class Person {
+	constructor(firstName, lastName, height, width, weight, work) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.height = height;
+		this.width = width;
+		this.weight = weight;
+		this.work = work;
+	}
+	get job() {
+
+	}
+}
