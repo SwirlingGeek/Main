@@ -194,3 +194,88 @@ class Person {
 
 	}
 }
+class Article {
+	constructor(title, date) {
+		this.title = title;
+		this.date = date;
+	}
+
+	static compare(articleA, articleB) {
+		return articleA - articleB;
+	}
+}
+let articles = [
+	new Article("HTML", new Date(2019, 1, 1)),
+	new Article("CSS", new Date(2019, 0, 1)),
+	new Article("JavaScript", new Date(2019, 11, 1))
+];
+articles.sort(Article.compare);
+class Article2 extends Article {
+	constructor(title, date) {
+		super(title, date);
+	}
+	static createTodays(name) {
+		return new this(name = `Today's digest`, new Date());
+	}
+}
+let article = Article2.createTodays('Weekend');
+// alert(article.title);
+class Begger extends Object {
+	constructor(name) {
+		super(name);
+		this.name = name;
+	}
+
+}
+let rab = new Begger('Rab');
+console.log(Begger.prototype.__proto__)
+console.log(rab.hasOwnProperty('name'));
+
+class CoffeeMachine {
+	waterAmount = 0;
+	costructor(power) {
+		this.power = power;
+		console.log('The coffee machine was created, with capacity: ' + power)
+	}
+}
+let coffeeMachine = new CoffeeMachine(100);
+coffeeMachine.waterAmount = 200;
+class Petrol {
+	#petrolLimit = 10000;
+	#checklimit(value) {
+		if (value < 0) throw new Error('Invalid quantity!');
+		if (value > this.#petrolLimit) throw new Error('We have not enough petrol!')
+	}
+}
+const petrolStation = new Petrol();
+// petrolStation.#checklimit(200);//Error
+// petrolStation.#waterLimit = 100;
+class RealArray extends Array {
+	constructor(value) {
+		this._value = value;
+	}
+	isArray() {
+		return Array.isArray.call(this._value);
+	}
+}
+console.log(Object.prototype.toString.call(123));
+console.log(Object.prototype.toString.call(null));
+console.log(Object.prototype.toString.call(alert));
+console.log(Object.prototype.toString.call({}));
+
+let sayHiMixin = {
+	sayHi() {
+		alert(`Привет, ${this.name}`);
+	},
+	sayBye() {
+		alert(`Пока, ${this.name}`);
+	}
+};
+
+// использование:
+class User {
+	constructor(name) {
+		this.name = name;
+	}
+}
+Object.assign(User.prototype, sayHiMixin);
